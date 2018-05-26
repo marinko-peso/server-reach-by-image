@@ -1,0 +1,24 @@
+{
+  "name": "server-reach-by-image",
+  "version": "1.0.0",
+  "description": "Check can you reach a specific server (address or ip) by using image hosted on that server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marinko-peso/server-reach-by-image.git"
+  },
+  "keywords": [
+    "server",
+    "reach",
+    "image"
+  ],
+  "author": "Marinko Peso",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marinko-peso/server-reach-by-image/issues"
+  },
+  "homepage": "https://github.com/marinko-peso/server-reach-by-image#readme"
+}
