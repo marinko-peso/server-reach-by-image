@@ -9,6 +9,12 @@ Check can you reach a specific server (address or ip) by using image hosted on t
 Cause sometimes you need to see can you reach some server from Javascript, and things can hurt. How? Well imagine asking for server with http only from https location? Or imagine needing to check for IP but certificate on that page is only valid for specific domain name. Getting some image will work even then, and give you that precious information is the location reachable or not.
 For example: checking for internal IP to determine are you on a vpn connection.
 
+## Install
+
+```ssh
+npm install server-reach-by-image
+```
+
 ## Running
 
 ```js
