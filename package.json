@@ -1,10 +1,9 @@
 {
   "name": "server-reach-by-image",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Check can you reach a specific server (address or ip) by using image hosted on that server.",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marinko-peso/server-reach-by-image.git"
