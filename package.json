@@ -4,7 +4,8 @@
   "description": "Check can you reach a specific server (address or ip) by using image hosted on that server.",
   "main": "index.js",
   "scripts": {
-    "release": "np --yolo"
+    "release": "np --yolo",
+    "test": "node_modules/.bin/jest"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/marinko-peso/server-reach-by-image/issues"
   },
-  "homepage": "https://github.com/marinko-peso/server-reach-by-image#readme"
+  "homepage": "https://github.com/marinko-peso/server-reach-by-image#readme",
+  "devDependencies": {
+    "jest": "^23.0.0"
+  }
 }

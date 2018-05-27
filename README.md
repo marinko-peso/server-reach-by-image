@@ -1,6 +1,7 @@
 # Server Reach By Image
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![license](https://img.shields.io/github/license/marinko-peso/shamus.svg)](https://github.com/marinko-peso/shamus/blob/master/LICENSE)
+![package version](https://img.shields.io/npm/v/server-reach-by-image.svg)
 
 Check can you reach a specific server (address or ip) by using image hosted on that server.
 
@@ -24,10 +25,12 @@ const options = {};
 const serverByImage = new ServerReachByImage(options);
 serverByImage.reach().then(success).catch(fail);
 ```
+Fail method will receive error message as first parameter.
+
 Available options:
-- url (address to hit, default ```https://upload.wikimedia2.org```)
-- imgUrl (image to hit on the url, default ```/wikipedia/commons/thumb/d/db/Npm-logo.svg/440px-Npm-logo.svg.png```)
-- timeout (time to wait for load before declaring a fail attempt, default ```2500```ms)
+- url (address to hit, without following / preferred)
+- imgUrl (image to hit on the url, starting with /)
+- timeout (integer, time to wait for load before declaring a fail attempt, default ```3000```ms)
 
 ## License
 

@@ -1,20 +1,24 @@
 const defaults = {
-  url: 'https://upload.wikimedia2.org',
-  imgUrl: '/wikipedia/commons/thumb/d/db/Npm-logo.svg/440px-Npm-logo.svg.png',
-  timeout: 2500
+  timeout: 3000
+};
+const errors = {
+  timeout: 'timeout',
+  missing_urls: 'urls not specified',
+  timeout_integer: 'timeout should be an integer'
 };
 
 
 class ServerReachByImage {
   constructor(options = {}) {
     this.options = Object.assign({}, defaults, options);
+    this.validateParams();
   }
 
   reach() {
     return new Promise((resolve, reject) => {
       Promise.race([this.getImage(), this.timeout(this.options.timeout)])
-        .then(() => resolve())
-        .catch(e => reject(e))
+        .then(() => resolve(null, true))
+        .catch(e => reject(e, false))
     });
   }
 
@@ -28,10 +32,21 @@ class ServerReachByImage {
   }
 
   timeout(ms) {
-    const err = new Error('timeout');
+    const err = new Error(errors.timeout);
     return new Promise((resolve, reject) => setTimeout(() => reject(err), ms));
   }
-}
 
+  validateParams() {
+    if (!this.options.url || !this.options.imgUrl)
+        throw new Error(errors.missing_urls);
+
+    this.options.url = this.options.url.replace(/\/+$/, '');
+    if (!this.options.imgUrl.startsWith('/'))
+      this.options.imgUrl = `/${this.options.imgUrl}`;
+
+    if (!Number.isInteger(this.options.timeout))
+      throw new Error(errors.timeout_integer);
+  }
+}
 
 module.exports = ServerReachByImage;
