@@ -7,7 +7,6 @@ const errors = {
   timeout_integer: 'timeout should be an integer'
 };
 
-
 class ServerReachByImage {
   constructor(options = {}) {
     this.options = Object.assign({}, defaults, options);
@@ -18,7 +17,7 @@ class ServerReachByImage {
     return new Promise((resolve, reject) => {
       Promise.race([this.getImage(), this.timeout(this.options.timeout)])
         .then(() => resolve(null, true))
-        .catch(e => reject(e, false))
+        .catch(e => reject(e, false));
     });
   }
 
@@ -38,7 +37,7 @@ class ServerReachByImage {
 
   validateParams() {
     if (!this.options.url || !this.options.imgUrl)
-        throw new Error(errors.missing_urls);
+      throw new Error(errors.missing_urls);
 
     this.options.url = this.options.url.replace(/\/+$/, '');
     if (!this.options.imgUrl.startsWith('/'))
