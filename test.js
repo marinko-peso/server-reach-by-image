@@ -1,23 +1,22 @@
 ServerReachByImage = require('./index');
 
-
 describe('params not specified', () => {
   const options = {
     url: 'https://www.google.com'
   };
+
   it('should return not specified error for 1 missing url', () => {
     expect(() => {
-      const serverReach = new ServerReachByImage(options).toThrow('urls not specified');
-    });
+      new ServerReachByImage(options);
+    }).toThrow('Url param(s) not specified');
   });
 
   it('should return not specified error for both missing urls', () => {
     expect(() => {
-      const serverReach = new ServerReachByImage().toThrow('urls not specified');
-    });
+      new ServerReachByImage()
+    }).toThrow('Url param(s) not specified');
   });
 });
-
 
 describe('url params should get fixed', () => {
   const options = {
@@ -35,7 +34,6 @@ describe('url params should get fixed', () => {
   });
 });
 
-
 describe('timeout param', () => {
   const options = {
     url: 'https://www.test-reach-dummy.com',
@@ -45,7 +43,7 @@ describe('timeout param', () => {
 
   it('should be an integer', () => {
     expect(() => {
-      const serverReach = new ServerReachByImage(options).toThrow('timeout should be an integer');
-    });
+      new ServerReachByImage(options);
+    }).toThrow('Timeout param should be an integer');
   });
 });

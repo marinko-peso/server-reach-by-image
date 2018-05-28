@@ -1,10 +1,11 @@
 const defaults = {
-  timeout: 3000
+  timeout: 2500
 };
 const errors = {
-  timeout: 'timeout',
-  missing_urls: 'urls not specified',
-  timeout_integer: 'timeout should be an integer'
+  load_timeout: 'Loading image timed out',
+  load_fail: 'Loading image failed',
+  param_missing_urls: 'Url param(s) not specified',
+  param_timeout_integer: 'Timeout param should be an integer'
 };
 
 class ServerReachByImage {
@@ -13,38 +14,29 @@ class ServerReachByImage {
     this.validateParams();
   }
 
-  reach() {
+  load() {
     return new Promise((resolve, reject) => {
-      Promise.race([this.getImage(), this.timeout(this.options.timeout)])
-        .then(() => resolve(null, true))
-        .catch(e => reject(e, false));
-    });
-  }
+      const fail = msg => reject(new Error(msg), false);
 
-  getImage() {
-    return new Promise((resolve, reject) => {
-      const img = document.createElement('img');
-      img.onload = () => resolve();
-      img.onerror = e => reject(e);
+      const img = new Image();
+      img.onload = () => resolve(null, true);
+      img.onerror = e => fail(errors.load_fail);
       img.src = `${this.options.url}${this.options.imgUrl}?${new Date().getTime()}`;
-    });
-  }
 
-  timeout(ms) {
-    const err = new Error(errors.timeout);
-    return new Promise((resolve, reject) => setTimeout(() => reject(err), ms));
+      setTimeout(() => fail(errors.load_timeout), this.options.timeout);
+    });
   }
 
   validateParams() {
     if (!this.options.url || !this.options.imgUrl)
-      throw new Error(errors.missing_urls);
+      throw new Error(errors.param_missing_urls);
 
     this.options.url = this.options.url.replace(/\/+$/, '');
     if (!this.options.imgUrl.startsWith('/'))
       this.options.imgUrl = `/${this.options.imgUrl}`;
 
     if (!Number.isInteger(this.options.timeout))
-      throw new Error(errors.timeout_integer);
+      throw new Error(errors.param_timeout_integer);
   }
 }
 

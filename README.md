@@ -23,7 +23,7 @@ import ServerReachByImage from 'server-reach-by-image';
 
 const options = {};
 const serverByImage = new ServerReachByImage(options);
-serverByImage.reach().then(success).catch(fail);
+serverByImage.load().then(success).catch(fail);
 ```
 Fail method will receive error message as first parameter.
 
