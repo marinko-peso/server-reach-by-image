@@ -16,10 +16,10 @@ class ServerReachByImage {
 
   load() {
     return new Promise((resolve, reject) => {
-      const fail = msg => reject(new Error(msg), false);
+      const fail = msg => reject({ msg: new Error(msg), status: false });
 
       const img = new Image();
-      img.onload = () => resolve(null, true);
+      img.onload = () => resolve({ msg: null, status: true });
       img.onerror = e => fail(errors.load_fail);
       img.src = `${this.options.url}${this.options.imgUrl}?${new Date().getTime()}`;
 
