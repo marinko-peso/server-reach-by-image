@@ -5,7 +5,9 @@ module.exports = {
     'space-before-function-paren': ['error', {
       anonymous: 'always',
       named: 'never'
-    }],
-    curly: ['error', 'multi']
+    }]
+  },
+  env: {
+    jest: true
   }
 };

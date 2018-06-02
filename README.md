@@ -1,7 +1,8 @@
 # Server Reach By Image
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![license](https://img.shields.io/github/license/marinko-peso/shamus.svg)](https://github.com/marinko-peso/shamus/blob/master/LICENSE)
-![package version](https://img.shields.io/npm/v/server-reach-by-image.svg)
+[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard)
+[![package version](https://img.shields.io/npm/v/server-reach-by-image.svg)](https://npm.im/server-reach-by-image)
 
 Check can you reach a specific server (address or ip) by using image hosted on that server.
 
@@ -13,7 +14,7 @@ For example: checking for internal IP to determine are you on a vpn connection.
 ## Install
 
 ```ssh
-npm install server-reach-by-image
+npm i server-reach-by-image
 ```
 
 ## Running

@@ -16,8 +16,10 @@ class ServerReachByImage {
 
   load() {
     return new Promise((resolve, reject) => {
+      /* eslint-disable prefer-promise-reject-errors */
       const fail = msg => reject({ msg: new Error(msg), status: false });
 
+      /* eslint-disable no-undef */
       const img = new Image();
       img.onload = () => resolve({ msg: null, status: true });
       img.onerror = e => fail(errors.load_fail);
@@ -28,15 +30,18 @@ class ServerReachByImage {
   }
 
   validateParams() {
-    if (!this.options.url || !this.options.imgUrl)
+    if (!this.options.url || !this.options.imgUrl) {
       throw new Error(errors.param_missing_urls);
+    }
 
     this.options.url = this.options.url.replace(/\/+$/, '');
-    if (!this.options.imgUrl.startsWith('/'))
+    if (!this.options.imgUrl.startsWith('/')) {
       this.options.imgUrl = `/${this.options.imgUrl}`;
+    }
 
-    if (!Number.isInteger(this.options.timeout))
+    if (!Number.isInteger(this.options.timeout)) {
       throw new Error(errors.param_timeout_integer);
+    }
   }
 }
 

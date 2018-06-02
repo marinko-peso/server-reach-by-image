@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "release": "np --yolo",
-    "test": "node_modules/.bin/jest",
-    "lint": "eslint"
+    "test": "jest",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",

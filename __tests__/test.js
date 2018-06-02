@@ -1,19 +1,19 @@
-ServerReachByImage = require('./index');
+const ServerReachByImage = require('../index');
 
 describe('params not specified', () => {
-  const options = {
-    url: 'https://www.google.com'
-  };
+  const options = { url: 'https://www.google.com' };
 
   it('should return not specified error for 1 missing url', () => {
+    /* eslint-disable no-new */
     expect(() => {
       new ServerReachByImage(options);
     }).toThrow('Url param(s) not specified');
   });
 
   it('should return not specified error for both missing urls', () => {
+    /* eslint-disable no-new */
     expect(() => {
-      new ServerReachByImage()
+      new ServerReachByImage();
     }).toThrow('Url param(s) not specified');
   });
 });
@@ -42,6 +42,7 @@ describe('timeout param', () => {
   };
 
   it('should be an integer', () => {
+    /* eslint-disable no-new */
     expect(() => {
       new ServerReachByImage(options);
     }).toThrow('Timeout param should be an integer');
