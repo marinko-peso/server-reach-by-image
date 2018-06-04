@@ -1,6 +1,6 @@
 {
   "name": "server-reach-by-image",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Check can you reach a specific server (address or ip) by using image hosted on that server.",
   "main": "dist/server-reach-by-image.min.js",
   "module": "dist/server-reach-by-image.es.js",
