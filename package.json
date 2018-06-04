@@ -6,7 +6,9 @@
   "scripts": {
     "release": "np --yolo",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "dev": "webpack --watch --mode development",
+    "prod": "webpack --progress --hide-modules --mode production"
   },
   "repository": {
     "type": "git",
@@ -31,7 +33,9 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
-    "jest": "^23.0.0"
+    "jest": "^23.0.0",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^3.0.1"
   },
   "dependencies": {}
 }
