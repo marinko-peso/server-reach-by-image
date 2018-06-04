@@ -2,13 +2,13 @@
   "name": "server-reach-by-image",
   "version": "1.0.5",
   "description": "Check can you reach a specific server (address or ip) by using image hosted on that server.",
-  "main": "index.js",
+  "main": "dist/server-reach-by-image.min.js",
+  "module": "dist/server-reach-by-image.es.js",
   "scripts": {
     "release": "np --yolo",
     "test": "jest",
     "lint": "eslint .",
-    "dev": "webpack --watch --mode development",
-    "prod": "webpack --progress --hide-modules --mode production"
+    "build": "bili"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,11 @@
   },
   "homepage": "https://github.com/marinko-peso/server-reach-by-image#readme",
   "devDependencies": {
+    "babel-jest": "^23.0.1",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "bili": "^3.1.2",
     "eslint": "^4.19.1",
     "eslint-config-semistandard": "^12.0.1",
     "eslint-config-standard": "^11.0.0",
@@ -33,9 +38,7 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
-    "jest": "^23.0.0",
-    "webpack": "^4.10.2",
-    "webpack-cli": "^3.0.1"
+    "jest": "^23.0.0"
   },
   "dependencies": {}
 }

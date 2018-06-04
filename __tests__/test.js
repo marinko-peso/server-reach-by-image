@@ -1,4 +1,4 @@
-const ServerReachByImage = require('../index');
+const ServerReachByImage = require('../src/index');
 
 describe('params not specified', () => {
   const options = { url: 'https://www.google.com' };
