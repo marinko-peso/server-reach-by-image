@@ -2,10 +2,8 @@ const defaults = {
   timeout: 2500
 };
 const errors = {
-  load_timeout: 'Loading image timed out',
-  load_fail: 'Loading image failed',
-  param_missing_urls: 'Url param(s) not specified',
-  param_timeout_integer: 'Timeout param should be an integer'
+  E_LOAD_TIMEOUT: 'Loading image timed out',
+  E_LOAD_FAIL: 'Loading image failed'
 };
 
 class ServerReachByImage {
@@ -16,22 +14,20 @@ class ServerReachByImage {
 
   load() {
     return new Promise((resolve, reject) => {
-      /* eslint-disable prefer-promise-reject-errors */
-      const fail = msg => reject({ msg: new Error(msg), status: false });
+      const fail = code => reject(Object.assign(new Error(errors[code]), { status: false, code }));
 
-      /* eslint-disable no-undef */
-      const img = new Image();
+      const img = new window.Image();
       img.onload = () => resolve({ msg: null, status: true });
-      img.onerror = e => fail(errors.load_fail);
+      img.onerror = e => fail('E_LOAD_FAIL');
       img.src = `${this.options.url}${this.options.imgUrl}?${new Date().getTime()}`;
 
-      setTimeout(() => fail(errors.load_timeout), this.options.timeout);
+      setTimeout(() => fail('E_LOAD_TIMEOUT'), this.options.timeout);
     });
   }
 
   validateParams() {
     if (!this.options.url || !this.options.imgUrl) {
-      throw new Error(errors.param_missing_urls);
+      throw new Error('Url param(s) not specified');
     }
 
     this.options.url = this.options.url.replace(/\/+$/, '');
@@ -40,9 +36,10 @@ class ServerReachByImage {
     }
 
     if (!Number.isInteger(this.options.timeout)) {
-      throw new Error(errors.param_timeout_integer);
+      throw new TypeError('Timeout param should be an integer');
     }
   }
 }
 
+ServerReachByImage.errors = Object.keys(errors);
 module.exports = ServerReachByImage;

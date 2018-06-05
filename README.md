@@ -20,11 +20,15 @@ npm i server-reach-by-image
 ## Running
 
 ```js
-import ServerReachByImage from 'server-reach-by-image';
+import ServerReachByImage, { errors } from 'server-reach-by-image';
 
 const options = {};
 const serverByImage = new ServerReachByImage(options);
-serverByImage.load().then(success).catch(fail);
+serverByImage.load()
+    .then(data => {})
+    .catch({ code: errors.E_LOAD_FAIL }, e => {})
+    .catch({ code: errors.E_LOAD_TIMEOUT }, e => {})
+    .catch(e => {});
 ```
 Fail method will receive error message as first parameter.
 
