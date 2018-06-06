@@ -3,6 +3,7 @@
 [![license](https://img.shields.io/github/license/marinko-peso/shamus.svg)](https://github.com/marinko-peso/shamus/blob/master/LICENSE)
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/Flet/semistandard)
 [![package version](https://img.shields.io/npm/v/server-reach-by-image.svg)](https://npm.im/server-reach-by-image)
+[![install size](https://packagephobia.now.sh/badge?p=server-reach-by-image)](https://packagephobia.now.sh/result?p=server-reach-by-image)
 
 Check can you reach a specific server (address or ip) by using image hosted on that server.
 
@@ -39,4 +40,4 @@ Available options:
 
 ## License
 
-MIT.
+MIT
